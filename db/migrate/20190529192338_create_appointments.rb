@@ -4,6 +4,7 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.string :time
       t.belongs_to :user, foreign_key: true
       t.belongs_to :doctor, foreign_key: true
+      t.string :speciality
 
       t.timestamps
     end
