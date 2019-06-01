@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :set_doc
   before_action :set_appoint, only: [:show, :edit, :update, :destroy]
+
   def index
     @stranges = @dr.appointments.where(speciality: 'strange')
     @peds = @dr.appointments.where(speciality: 'pediatrics')
@@ -8,10 +9,13 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    @user = User.find(@appointment.user_id)
   end
 
   def new
+    @users = User.all - @dr.users
     @appointment = @dr.appointments.new
+    render partial: 'form'
   end
 
   def create
@@ -23,7 +27,9 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def edit  
+  def edit 
+    @users = User.all - @dr.users
+    render partial: 'form'
   end
 
   def update

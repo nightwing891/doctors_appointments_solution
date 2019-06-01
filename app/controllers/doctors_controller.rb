@@ -10,6 +10,7 @@ class DoctorsController < ApplicationController
 
   def new
     @dr = Doctor.new
+    render partial: 'form'
   end
 
   def create
@@ -23,6 +24,7 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+    render partial: 'form'
   end
 
   def update
@@ -35,7 +37,7 @@ class DoctorsController < ApplicationController
 
   def destroy
     @dr.destroy
-    redirect_to drs_path
+    redirect_to doctors_path
   end
 
   private
