@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'courses#index'
+  root 'users#index'
 
   resources :users
   resources :doctors do
